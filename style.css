@@ -8,7 +8,8 @@ body, html {
 
 .hero-image {
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("Forever-forhandler-aloe-vera-produkter-pnek20yw7xmcpmkbivcmsse7f8o4gj44m00g0uuhjk.png");
-    height: 50vh; /* Adjusted to fit better on different screens */
+    height: 50vh;
+    min-height: 250px; /* Lägg till min-height för att förhindra för små bilder */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -87,14 +88,16 @@ body, html {
     justify-content: space-between;
     align-items: center;
     background-color: #14a99f;
-    padding: 15px 20px; /* Increased padding for better spacing */
+    padding: 15px 20px;
     color: white;
+    flex-wrap: wrap; /* Gör så att menyn och logo bryts för små skärmar */
 }
 
 .search-bar {
     display: flex;
     align-items: center;
     gap: 10px;
+    flex-wrap: wrap; /* Gör så att sökfältet får bra responsivitet */
 }
 
 .search-bar input {
@@ -123,6 +126,7 @@ body, html {
 .container {
     display: flex;
     gap: 20px;
+    flex-wrap: wrap; /* Gör så att elementen bryts till ny rad på mindre skärmar */
     padding: 15px;
 }
 
@@ -133,54 +137,33 @@ body, html {
     box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
     position: sticky;
     top: 0;
-    height: calc(100vh - 30px); /* Ensures the sidebar stays visible while scrolling */
+    height: calc(100vh - 30px);
 }
 
-.sidebar h2 {
-    font-size: 20px;
-    margin-bottom: 15px;
+/* För mindre skärmar (mobil), döljer vi sidomenyn och använder en hamburgermeny */
+@media (max-width: 768px) {
+    .sidebar {
+        display: none; /* Döljer sidomenyn */
+    }
+    
+    /* Lägg till en knapp för att visa sidomenyn */
+    .sidebar-toggle {
+        display: block;
+        font-size: 30px;
+        cursor: pointer;
+    }
 }
 
-.sidebar ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.sidebar ul li {
-    margin: 10px 0;
-}
-
-.sidebar ul li a {
-    text-decoration: none;
-    color: #333;
-    font-size: 16px;
-    transition: 0.3s;
-}
-
-.sidebar ul li a:hover {
-    color: #14a99f;
-}
-
-/* Produkter bredvid varandra i en rad */
+/* Produkter */
 .products {
-    display: flex; /* Flexbox layout */
-    flex-wrap: wrap; /* Produkterna kan brytas till nästa rad om det behövs */
-    justify-content: flex-start; /* Placera produkterna till vänster */
-    gap: 20px; /* Mellanrum mellan produkterna */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 20px;
     padding: 15px;
     width: 100%;
 }
 
-/*.product {
-    flex: 1 1 calc(15% - 20px); /* Produkterna får 33% bredd minus gap */
-    /*box-sizing: border-box;
-    padding: 10px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    transition: transform 0.2s ease;
-}*/
 /* För att hålla produktstorleken konsekvent */
 .product {
     flex: 1 1 calc(15% - 20px); /* Produkterna får 15% bredd minus gap */
@@ -195,24 +178,12 @@ body, html {
 
 /* Gör så att bilderna får rätt storlek */
 .product img {
-    width: 100%; /* Bilden fyller 100% av produktens bredd */
-    max-width: 200px; /* Maximal storlek på bilden (justera vid behov) */
-    height: auto; /* Bevara bildens proportioner */
-    object-fit: contain; /* Förhindrar att bilden sträcks eller beskärs */
-    margin: 0 auto; /* Centrerar bilden horisontellt inom sin container */
-}
-
-/* För att säkerställa att bilderna inte blir för små */
-.product img {
-    min-width: 150px; /* Minimumstorlek på bilden */
-}
-
-
-.product img {
     width: 100%;
+    max-width: 200px;
     height: auto;
-    border-radius: 8px;
-    margin-bottom: 10px;
+    object-fit: contain;
+    margin: 0 auto;
+    min-width: 150px;
 }
 
 .product:hover {
@@ -232,8 +203,9 @@ body, html {
 
 .product button:hover {
     background-color: #111;
-}/*här*/
+}
 
+/* Cart Section */
 .cart-info {
     position: relative;
 }
@@ -258,7 +230,7 @@ body, html {
     top: 0;
     right: -10px;
 }
-/* Cart Section */
+
 .cart-page {
     background-color: #fff;
     padding: 30px;
@@ -334,58 +306,57 @@ body, html {
 .checkout-btn:hover {
     background-color: #2ecc71;
 }
+
 footer {
     background-color: #333;
     color: white;
     padding: 20px;
     text-align: center;
     font-family: Arial, sans-serif;
-  }
+}
 
-  .footer-content {
+.footer-content {
     max-width: 1000px;
     margin: 0 auto;
-  }
+}
 
-  /* Social media links */
-  .social-links {
+.social-links {
     list-style: none;
     padding: 0;
     margin: 20px 0;
-  }
+}
 
-  .social-links li {
+.social-links li {
     display: inline-block;
     margin: 10px;
-  }
+}
 
-  .social-links a {
+.social-links a {
     text-decoration: none;
     color: white;
     font-size: 20px;
     display: flex;
     align-items: center;
     gap: 8px;
-  }
+}
 
-  .social-links a:hover {
-    color: #ff6a00; /* Highlight color on hover */
-  }
+.social-links a:hover {
+    color: #ff6a00;
+}
 
-  /* Contact info styling */
-  .contact-info p {
+.contact-info p {
     margin: 5px 0;
     font-size: 14px;
-  }
+}
 
-  .contact-info a {
+.contact-info a {
     color: #ff6a00;
     text-decoration: none;
-  }
+}
 
-  .contact-info a:hover {
+.contact-info a:hover {
     text-decoration: underline;
-  }
+}
 
 /* Responsiv design: För skärmstorlekar mindre än 768px */
 @media (max-width: 768px) {
@@ -398,5 +369,25 @@ footer {
 @media (max-width: 480px) {
     .product {
         flex: 1 1 calc(100% - 20px); /* Produkterna tar upp hela bredden på ännu mindre skärmar */
+    }
+
+    .main-header {
+        padding: 10px 15px;
+    }
+
+    .sidebar h2 {
+        font-size: 18px;
+    }
+
+    .cart-page h2 {
+        font-size: 20px;
+    }
+
+    .cart-page td {
+        font-size: 14px;
+    }
+
+    .product button {
+        font-size: 14px;
     }
 }
